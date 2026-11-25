@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gastos-telegram-bot"
+version = "0.1.0"
+description = "Bot de Telegram para gestionar gastos personales con Gemini API y Google Sheets"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "python-telegram-bot>=21.6",
+    "google-genai>=1.0.0",
+    "gspread>=6.1.0",
+    "google-auth>=2.35.0",
+    "pydantic>=2.9.0",
+    "pydantic-settings>=2.6.0",
+    "tzdata>=2024.2",
+]
+
+[project.scripts]
+gastos-bot = "gastos_bot.main:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+    "ruff>=0.8.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/gastos_bot"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]

@@ -1,0 +1,22 @@
+# Entorno y secretos
+.env
+credentials.json
+*.json
+!pyproject.toml
+
+# Python / uv
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+dist/
+build/
+*.egg-info/
+
+# IDEs / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
